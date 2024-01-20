@@ -299,3 +299,25 @@ showDogs.addEventListener('click', (e) => {
     console.log("doggo4");
   }
 }) 
+
+showDinos.addEventListener('click', (e) => {
+  console.log("dino")
+  if (e.target.id.includes("dino")) {
+    console.log("doggo2");
+    const filterDinos = pets.filter((pet) => pet.type === "dino")
+    console.log("doggo3");
+    cardsOnDom(filterDinos);
+    console.log("doggo4");
+  }
+}) 
+
+// showAllButton.addEventListener('click', (e) => {
+//   console.log("all")
+//   if (e.target.id.includes("")) {
+//     console.log("all2");
+//     const filterAll = pets.filter((pet) => pet.type === "")
+//     console.log("all3");
+//     cardsOnDom(filterAll);
+//     console.log("all4");
+//   }
+// }) 
