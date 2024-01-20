@@ -1,0 +1,29 @@
+body {
+  background-color: floralwhite;
+}
+
+#pets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 20px;
+}
+
+.petName {
+  display: flex;
+  justify-content: center;
+}
+
+.color {
+  display: flex;
+  justify-content: center;
+}
+
+.specialSkill {
+  text-align: center;
+} 
+
+.petType {
+  display: flex;
+  justify-content: center;
+}
