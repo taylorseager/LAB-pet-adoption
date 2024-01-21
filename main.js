@@ -11,7 +11,7 @@ const pets = [
         id: 2,
       name: "Trouble",
       color: "Brown",
-      specialSkill: "Just picks the tomatoes off of a sandwich instead of requesting a whole new sandwich.",
+      specialSkill: "Just picks the tomatoes off of a sandwich",
       type: "dino",
       imageUrl: "https://images.pexels.com/photos/3661266/pexels-photo-3661266.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
@@ -99,7 +99,7 @@ const pets = [
       id: 13,
       name: "Chester",
       color: "Red",
-      specialSkill: "Expertly quotes and recognizes dialogue from early seasons of The Simpsons.",
+      specialSkill: "Expertly quotes & recognizes dialogue from The Simpsons.",
       type: "dog",
       imageUrl: "https://images.pexels.com/photos/1564506/pexels-photo-1564506.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
@@ -131,7 +131,7 @@ const pets = [
      id: 17,
       name: "Muffin",
       color: "Yellow",
-      specialSkill: "Does not freak out if you haven’t seen his favorite movie (The Big Lebowski).",
+      specialSkill: "Doesn't freak out if you haven’t seen his favorite movie.",
       type: "cat",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAwGwIErzVUkwWTvmFk-SDnNx6C_ToSTN_uQ&usqp=CAU"
     },
@@ -187,7 +187,7 @@ const pets = [
         id: 24,
       name: "George",
       color: "Brown",
-      specialSkill: "Participates in karaoke but does not force others to go out to karaoke.",
+      specialSkill: "Participates in karaoke.",
       type: "dog",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvOvYQny0BfNUTNHE4t-TSlim1DvlbArnwqQ&usqp=CAU"
     },
@@ -227,7 +227,7 @@ const pets = [
         id: 29,
       name: "Oscar",
       color: "Green",
-      specialSkill: "Gives hugs with appropriate pressure and for the right length of time.",
+      specialSkill: "Does not love Oscar Wilde.",
       type: "cat",
       imageUrl: "http://img.izismile.com/img/img2/20090219/cats_02.jpg"
     },
@@ -269,55 +269,61 @@ const pets = [
   renderToDom("#pets", domString);
 };
 
+cardsOnDom(pets);
 
 const showAllButton = document.querySelector("#all-btn");
 const showCats = document.querySelector("#cat-btn");
 const showDogs = document.querySelector("#dog-btn");
 const showDinos = document.querySelector("#dino-btn");
+const submit = document.querySelector("#submit-btn");
+
+showAllButton.addEventListener("click", () => {
+  cardsOnDom(pets);
+});
 
 // const targetPet = document.querySelector("#pets");
 // targetPet.innerHTML = domString;
 
 showCats.addEventListener('click', (e) => {
-  console.log("kittens")
   if (e.target.id.includes("cat")) {
-    console.log("kittens2");
     const filterCats = pets.filter((pet) => pet.type === "cat")
-    console.log("kittens3");
     cardsOnDom(filterCats);
-    console.log("kittens4");
   }
 }) 
 
 showDogs.addEventListener('click', (e) => {
-  console.log("doggo")
   if (e.target.id.includes("dog")) {
-    console.log("doggo2");
     const filterDogs = pets.filter((pet) => pet.type === "dog")
-    console.log("doggo3");
     cardsOnDom(filterDogs);
-    console.log("doggo4");
   }
 }) 
 
 showDinos.addEventListener('click', (e) => {
-  console.log("dino")
   if (e.target.id.includes("dino")) {
-    console.log("doggo2");
     const filterDinos = pets.filter((pet) => pet.type === "dino")
-    console.log("doggo3");
     cardsOnDom(filterDinos);
-    console.log("doggo4");
   }
 }) 
 
-// showAllButton.addEventListener('click', (e) => {
-//   console.log("all")
-//   if (e.target.id.includes("")) {
-//     console.log("all2");
-//     const filterAll = pets.filter((pet) => pet.type === "")
-//     console.log("all3");
-//     cardsOnDom(filterAll);
-//     console.log("all4");
-//   }
-// }) 
+
+
+const form = document.querySelector("form");
+
+const newPet = (e) => {
+  e.preventDefault()
+
+  const createNewPet = {
+    id: pets.length +1,
+    name: document.querySelector("#name").value,
+    type: document.querySelector("#type").value,
+    specialSkill: document.querySelector("#specialSkill").value,
+    color: document.querySelector("#color").value,
+    imageUrl: document.querySelector("#url").value,
+  }
+
+  pets.push(createNewPet);
+  cardsOnDom(pets);
+  form.reset();
+}
+
+form.addEventListener("submit", newPet);
