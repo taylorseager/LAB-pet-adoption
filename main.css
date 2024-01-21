@@ -9,6 +9,11 @@ body {
   row-gap: 20px;
 }
 
+.dropdown {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
 .petName {
   display: flex;
   justify-content: center;
@@ -21,9 +26,35 @@ body {
 
 .specialSkill {
   text-align: center;
+  margin-top: 5px;
 } 
 
 .petType {
+  position: absolute;
+  top: 90%;
+  left: 45%;
+}
+
+.btnGroup {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  margin: 10px;
+  gap: 10px;
+}
+
+#dog-btn {
+  background-color: green;
+}
+
+#cat-btn {
+  background-color: pink;
+}
+
+#dino-btn {
+  background-color: orange;
+}
+
+#all-btn {
+  background-color: purple;
 }
