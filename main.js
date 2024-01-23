@@ -257,6 +257,7 @@ const pets = [
         <p class="card-text color">${pet.color}</p>
         <p class="card-text specialSkill">${pet.specialSkill}</p>
         <p class="card-text petType">${pet.type}</p>
+        <button class="btn-delete" id="delete--${pet.id}">Delete</button>
     </div>
   </div>`;
   }
@@ -264,7 +265,6 @@ const pets = [
     const selectedDiv = document.querySelector(divId);
     selectedDiv.innerHTML = htmlToRender;
   };
-
 
   renderToDom("#pets", domString);
 };
@@ -281,8 +281,16 @@ showAllButton.addEventListener("click", () => {
   cardsOnDom(pets);
 });
 
-// const targetPet = document.querySelector("#pets");
-// targetPet.innerHTML = domString;
+// another way to create a filter:
+// // const filter = (type) => {
+// //   const typeArray = [];
+// for (const pet of pets) {
+// //   if (pet.typeOfPet === type) {
+// //     typeArray.push(pet);
+// //   }
+// // }
+// return typeArray;
+// };
 
 showCats.addEventListener('click', (e) => {
   if (e.target.id.includes("cat")) {
@@ -306,7 +314,6 @@ showDinos.addEventListener('click', (e) => {
 }) 
 
 
-
 const form = document.querySelector("form");
 
 const newPet = (e) => {
@@ -327,3 +334,20 @@ const newPet = (e) => {
 }
 
 form.addEventListener("submit", newPet);
+
+const deletePet = document.querySelector("#pets");
+
+deletePet.addEventListener("click", (e) => {
+  if (e.target.id.includes("delete")) {
+    const [, id] = e.target.id.split("--");
+    const index = pets.findIndex((e) => e.id === Number(id));
+    pets.splice(index, 1);
+    cardsOnDom(pets);
+  }
+});
+
+const startApp = () => {
+  cardsOnDom(pets);
+};
+
+startApp();
