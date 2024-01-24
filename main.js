@@ -241,12 +241,6 @@ const pets = [
     }
   ];
 
-  // const renderToDom = (divId, htmlToRender) => {
-  //   const selectedDiv = document.querySelector(divId);
-  //   selectedDiv.innerHTML = htmlToRender;
-  // };
-
-
   const cardsOnDom = (pets) => {
     let domString = "";
     for (const pet of pets) {
@@ -257,7 +251,7 @@ const pets = [
         <p class="card-text color">${pet.color}</p>
         <p class="card-text specialSkill">${pet.specialSkill}</p>
         <p class="card-text petType">${pet.type}</p>
-        <button class="btn-delete" id="delete--${pet.id}">Delete</button>
+        <button class="delete" id="delete--${pet.id}">Delete</button>
     </div>
   </div>`;
   }
